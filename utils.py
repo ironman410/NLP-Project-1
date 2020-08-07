@@ -3,6 +3,8 @@ import json
 import re
 import string
 import numpy as np
+import nltk
+import collections
 from nltk.tokenize import word_tokenize
 
 #This function loads the train file given the train file path
@@ -50,11 +52,18 @@ def get_vocabulary(train_x,threshold=1):
 	vocabulary_freq_dict = {}
 	#finding the frequency of words in the dataset
 	for x in train_x:
-		for word in x:
+		for i,word in enumerate(x):
+			#finding unigrams
 			if word not in vocabulary_freq_dict:
 				vocabulary_freq_dict[word] = 1
 			else :
 				vocabulary_freq_dict[word] += 1
+			#finding bigrams
+			if i <= len(x)-2:
+				if (x[i],x[i+1]) not in vocabulary_freq_dict:
+					vocabulary_freq_dict[(x[i],x[i+1])] = 1
+				else :
+					vocabulary_freq_dict[(x[i],x[i+1])] += 1
 	#Removing rare words from the vocabulary that is removing words that occur less than the given threshold
 	vocabulary_dictionary = {}
 	current_index = 0
@@ -72,10 +81,14 @@ def get_feature_matrix(train_x,vocabulary_dictionary):
 	feature_matrix = np.empty([len(train_x),len(vocabulary_dictionary)])
 	for index,x in enumerate(train_x):
 		feature_vector = np.zeros(len(vocabulary_dictionary))
-		for word in x:
+		for i,word in enumerate(x):
 			word_index = vocabulary_dictionary.get(word)
 			if(word_index != None) :
 				feature_vector[word_index] = 1
+			if i <= len(x)-2:
+				bigram_index = vocabulary_dictionary.get((x[i],x[i+1])) 
+				if(word_index != None) :
+					feature_vector[bigram_index] = 1
 		feature_matrix[index] = feature_vector
 	return feature_matrix			
 
