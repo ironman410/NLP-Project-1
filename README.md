@@ -14,7 +14,7 @@ In order to run this project download the files :
 2. test.py
 3. utils.py
 
-Note : Make sure that both the files are in the same folder when running the program.
+Note : Make sure that all the files are in the same folder when running the program.
 
 The program can be run from the command line with following command :
 python test.py "<text message>"
