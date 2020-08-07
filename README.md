@@ -67,7 +67,13 @@ The second part of the problem required us to find the topic of the request or i
 # Results
 The accuracy on the training set was **83.95 %**. Some of the screenshots of the output are shown below :
 
-1. ![Result 1](./Results/Result-1.png)
+1. ![Result 1](https://github.com/ironman410/NLP-Project-1/blob/master/Results/Result-1.PNG)
+
+2. ![Result 2](https://github.com/ironman410/NLP-Project-1/blob/master/Results/Result-2.PNG)
+
+3. ![Result 3](https://github.com/ironman410/NLP-Project-1/blob/master/Results/Result-3.PNG)
+
+4. ![Result 4](https://github.com/ironman410/NLP-Project-1/blob/master/Results/Result-4.PNG)
 
 # Other Probable Approaches to the Problem
 
